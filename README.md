@@ -1,2 +1,2 @@
 # projetosAngular
-teste
+Projetos executados na matéria de desenvolvimento web

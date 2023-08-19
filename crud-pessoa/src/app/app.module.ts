@@ -4,7 +4,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './LoginComponent/LoginComponent';
-
+import { PessoaModule } from './pessoa/pessoa.module';
 @NgModule({
   declarations: [
     AppComponent,
@@ -12,7 +12,8 @@ import { LoginComponent } from './LoginComponent/LoginComponent';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    PessoaModule
   ],
   providers: [],
   bootstrap: [AppComponent]

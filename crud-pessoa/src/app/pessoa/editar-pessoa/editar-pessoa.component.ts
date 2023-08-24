@@ -2,9 +2,8 @@ import { Component,ViewChild,OnInit} from '@angular/core';
 import { Pessoa } from 'src/app/shared/models/pessoa.model';
 import { NgForm } from '@angular/forms';
 import { PessoaService } from '../services/pessoa.service';
-import { Route } from '@angular/router';
-import { ActivatedRoute } from '@angular/router';
-import { Router } from '@angular/router';
+import { ActivatedRoute,RouteConfigLoadEnd,Router } from '@angular/router';
+
 
 
 @Component({
@@ -20,20 +19,23 @@ export class EditarPessoaComponent implements OnInit {
     private pessoaService: PessoaService,
     private route: ActivatedRoute,
     private router: Router
-  ){
-
-  }
+  ){ }
   ngOnInit(): void {
-    let id = +this.route.snapshot.params['id']
+    // snapshot.params de ActivatedRoute dá acesso aos parâmetros passados
+    // Operador + (antes do this) converte para número
+    let id = +this.route.snapshot.params['id'];
+    // Com o id, obtém a pessoa
     const res = this.pessoaService.buscarPorID(id);
-      if (res !== undefined)
-          this.pessoa = res;
-      else
- throw new Error ("Pessoa não encontrada: id = " + id)
-    
-  }
+    if (res !== undefined){
+      this.pessoa = res;
+    }
+    else{
+      throw new Error ("Pessoa não encontrada: id = " + id);
+    }
+}
+
   atualizar () : void {
-    if (this.formPessoa.valid) {
+    if (this.formPessoa.form.valid) {
       this.pessoaService.atualizar(this.pessoa)
       this.router.navigate(['/pessoas'])
     }

@@ -36,6 +36,7 @@ export class PessoaService {
         objs[index] = pessoa
       }
       });
+      localStorage[LS_CHAVE] = JSON.stringify(pessoas)
   }
   remover (id: number): void {
     let pessoas: Pessoa []= this.listaTodos()

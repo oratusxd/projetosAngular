@@ -2,7 +2,7 @@ import { Component,OnInit,ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Pessoa } from 'src/app/shared/models/pessoa.model';
 import { PessoaService } from '../services/pessoa.service';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-inserir-pessoa',
@@ -14,6 +14,7 @@ export class InserirPessoaComponent implements OnInit {
   pessoa!:Pessoa
   constructor(
     private pessoaService:PessoaService,
+    private route : ActivatedRoute,
     private router : Router )
     { }
   ngOnInit(): void {
